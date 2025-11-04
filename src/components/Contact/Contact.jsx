@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Mail, Github, Send } from 'lucide-react'
-import './Contact.css'
+import './Contact.css' // Убедитесь, что Contact.css подключен
 
 const Contact = () => {
   const ref = useRef(null)
@@ -12,23 +12,44 @@ const Contact = () => {
     email: '',
     message: ''
   })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const { name, email, message } = formData
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`)
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    )
-    window.location.href = `mailto:ivsilan2005@gmail.com?subject=${subject}&body=${body}`
-    setFormData({ name: '', email: '', message: '' })
-  }
+  
+  // --- НОВОЕ СОСТОЯНИЕ ДЛЯ СТАТУСА ФОРМЫ ---
+  const [formStatus, setFormStatus] = useState(null) // null | 'sending' | 'success' | 'error'
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
+  }
+
+  // --- ОБНОВЛЕННЫЙ HANDLESUBMIT ---
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setFormStatus('sending') // Показываем, что отправка началась
+
+    try {
+      const response = await fetch('https://formspree.io/f/mzzklozv', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', message: '' }) // Очищаем форму
+      } else {
+        // Если Formspree вернет ошибку (например, 4xx или 5xx)
+        setFormStatus('error')
+      }
+    } catch (error) {
+      // Если есть ошибка сети (нет интернета и т.д.)
+      console.error('Form submission error:', error)
+      setFormStatus('error')
+    }
   }
 
   return (
@@ -93,7 +114,7 @@ const Contact = () => {
                   </motion.a>
 
                   <motion.a
-                    href="https://t.me/Melvud"
+                    href="https://t.me/drmelvud"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="contact-method"
@@ -104,7 +125,7 @@ const Contact = () => {
                     </div>
                     <div className="contact-text">
                       <p>Telegram</p>
-                      <p>@Melvud</p>
+                      <p>@DrMelvud</p>
                     </div>
                   </motion.a>
                 </div>
@@ -160,9 +181,24 @@ const Contact = () => {
                     className="submit-button"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
+                    disabled={formStatus === 'sending'} // Блокируем кнопку во время отправки
                   >
-                    Send Message
+                    {/* --- Меняем текст кнопки в зависимости от статуса --- */}
+                    {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
                   </motion.button>
+
+                  {/* --- Сообщения об успехе или ошибке --- */}
+                  {formStatus === 'success' && (
+                    <p className="form-status form-success">
+                      Message sent! I'll get back to you soon.
+                    </p>
+                  )}
+                  {formStatus === 'error' && (
+                    <p className="form-status form-error">
+                      Something went wrong. Please try again or email me
+                      directly.
+                    </p>
+                  )}
                 </form>
               </div>
             </div>

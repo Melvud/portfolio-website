@@ -3,10 +3,11 @@ import { ChevronDown } from 'lucide-react'
 import './Hero.css'
 
 const Hero = () => {
+  // Этот массив навыков мы обновили в прошлый раз
   const techStack = [
-    'React', 'Next.js', 'TypeScript', 'Node.js',
-    'Python', 'Kotlin', 'Three.js', 'WebRTC',
-    'PostgreSQL', 'Firebase', 'Docker'
+    'React', 'TypeScript', 'JavaScript', 'Node.js', 'Python', 'PHP', 'HTML', 'CSS', 'Kotlin', 'Java',
+    'Android SDK', 'WordPress', 'Telegram API', 'WhatsApp API', 'Three.js',
+    'WebRTC', 'PostgreSQL', 'Firebase', 'Git', 'Docker'
   ]
 
   const containerVariants = {
@@ -14,7 +15,7 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   }
@@ -31,13 +32,6 @@ const Hero = () => {
     }
   }
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section id="home" className="hero">
       <motion.div
@@ -50,11 +44,15 @@ const Hero = () => {
           Full-Stack Developer & Solutions Architect
         </motion.div>
 
+        {/* --- ИЗМЕНЕНИЯ ЗДЕСЬ --- */}
         <motion.h1 variants={itemVariants}>
-          Building the Future
+          Ivan Silantev
           <br />
-          <span className="gradient-text">One Line of Code at a Time</span>
+          <span className="gradient-text hero-subtitle">
+            Building Websites, Bots & Android Apps
+          </span>
         </motion.h1>
+        {/* --- КОНЕЦ ИЗМЕНЕНИЙ --- */}
 
         <motion.p variants={itemVariants}>
           Crafting elegant, scalable digital solutions — from immersive web experiences
@@ -94,14 +92,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      <motion.div
-        className="scroll-indicator"
-        onClick={() => scrollToSection('services')}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ChevronDown size={30} />
-      </motion.div>
+      
     </section>
   )
 }

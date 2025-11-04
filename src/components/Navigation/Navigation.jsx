@@ -49,7 +49,7 @@ const Navigation = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Ivan Silantev
+          IS {/* --- ИЗМЕНЕНО ЗДЕСЬ --- */}
         </motion.div>
 
         <ul className="nav-links">

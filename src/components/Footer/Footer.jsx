@@ -28,7 +28,7 @@ const Footer = () => {
             <Github size={20} />
           </a>
           <a
-            href="https://t.me/Melvud"
+            href="https://t.me/DrMelvud"
             aria-label="Telegram"
             target="_blank"
             rel="noopener noreferrer"

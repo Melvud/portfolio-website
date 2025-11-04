@@ -23,11 +23,21 @@
   margin-bottom: 1.5rem;
 }
 
+/* ИЗМЕНИТЕ ЭТОТ КЛАСС */
 .hero h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(3rem, 9vw, 6rem); /* Слегка увеличил имя */
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
+}
+
+/* ДОБАВЬТЕ ЭТОТ НОВЫЙ КЛАСС */
+.hero-subtitle {
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Новый размер для подзаголовка */
+  font-weight: 500;
+  display: block;
+  line-height: 1.3;
+  margin-top: 0.5rem;
 }
 
 .hero p {

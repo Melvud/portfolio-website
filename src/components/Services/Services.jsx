@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import {
+  Globe,
+  Bot,
+  Smartphone,
+  Server,
+  Cuboid,
+  SlidersHorizontal
+} from 'lucide-react'
 import './Services.css'
 
 const Services = () => {
@@ -9,42 +17,44 @@ const Services = () => {
 
   const services = [
     {
-      icon: '🌐',
-      title: 'Modern Web Applications',
+      icon: <Globe size={28} />,
+      title: 'Websites & Landing Pages',
       description:
-        'High-performance, responsive web apps built with React, Next.js, and cutting-edge technologies. From concept to deployment with SEO optimization and analytics.',
-      tags: ['React', 'Next.js', 'TypeScript', 'Tailwind']
+        'High-performance landing pages and responsive web apps. From custom React/Next.js builds to popular CMS platforms like WordPress. From concept to deployment with SEO optimization.',
+      tags: ['React', 'Next.js', 'WordPress', 'Landing Pages']
     },
     {
-      icon: '🤖',
+      icon: <Bot size={28} />,
       title: 'Intelligent Telegram Bots',
       description:
         'Custom automation solutions with admin panels, payment integration, and multi-channel notifications. FSM-based workflows for complex user interactions.',
       tags: ['Python', 'Aiogram', 'PostgreSQL', 'WebApp']
     },
     {
-      icon: '📱',
+      icon: <Smartphone size={28} />,
       title: 'Native Android Apps',
       description:
         'Production-ready Android applications with Jetpack Compose, real-time features, offline functionality, and seamless cloud integration.',
       tags: ['Kotlin', 'Compose', 'WebRTC', 'Firebase']
     },
     {
-      icon: '⚡',
+      icon: <Server size={28} />,
       title: 'Backend & Real-Time Systems',
       description:
         'Scalable REST APIs, WebSocket servers, microservices architecture, and real-time data processing with asyncio and event-driven design.',
       tags: ['Node.js', 'Python', 'PostgreSQL', 'Redis']
     },
+    // --- ИЗМЕНЕНИЯ ЗДЕСЬ: ---
     {
-      icon: '🎨',
+      icon: <Cuboid size={28} />, // <-- Исправлено с 'Cube'
       title: 'Interactive 3D Experiences',
       description:
         'Immersive web experiences using Three.js, WebGL, and creative coding. From data visualizations to product showcases.',
       tags: ['Three.js', 'WebGL', 'GSAP', 'Canvas']
     },
+    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
     {
-      icon: '🔧',
+      icon: <SlidersHorizontal size={28} />,
       title: 'DevOps & Optimization',
       description:
         'CI/CD pipelines, Docker containerization, performance audits, and code optimization. Making your applications faster and more reliable.',
