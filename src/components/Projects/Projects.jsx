@@ -84,6 +84,7 @@ const Projects = () => {
       mediaUrl: '/videos/messenger-demo.mp4',
       posterUrl: '/images/messenger-poster.jpg',
       mediaType: 'video',
+      layout: 'tall-image',
       title: 'Full-Stack Android Messenger',
       badges: [
         { text: 'Featured', type: 'featured' },
@@ -119,6 +120,7 @@ const Projects = () => {
       mediaUrl: '/videos/chess-demo.mp4',
       posterUrl: '/images/chess-poster.jpg',
       mediaType: 'video',
+      layout: 'tall-image',
       title: 'Chess Analysis for Android', // From README
       badges: [{ text: 'Native Android', type: 'featured' }], // From README
       icon: '♟️',
